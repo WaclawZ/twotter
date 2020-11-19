@@ -4,6 +4,7 @@
             <h1 class="username">
                 @{{ user.username }}
             </h1>
+            <div class="admin-badge" v-if="user.isAdmin">Admin</div>
             <div class="follower-count">
                 <strong>Followers: </strong> {{ followers }}
             </div>
@@ -16,6 +17,7 @@
         name: "UserProfile",
         data() {
             return {
+                inputText: "",
                 followers: 0,
                 user: {
                     id: 0,
@@ -65,6 +67,15 @@
         background-color: white;
         border-radius: 5px;
         border: 1px solid #DFE3E8
+    }
+
+    .admin-badge {
+        background: firebrick;
+        color: white;
+        border-radius: 5px;
+        margin-right: auto;
+        padding: 0 10px;
+        font-weight: bold;
     }
 
     h1 {
