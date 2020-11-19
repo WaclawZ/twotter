@@ -1,65 +1,30 @@
 <template>
     <div id="app">
-        @{{ user.username }} - {{ fullName }}
-        <strong>followers: {{followers}}</strong>
-        <button @click="followUser">Follow</button>
+        <UserProfile/>
     </div>
 </template>
 
 <script>
+    import UserProfile from "./components/UserProfile";
 
     export default {
         name: 'App',
-        data() {
-            return {
-                followers: 0,
-                user: {
-                    id: 0,
-                    username: "deSanta",
-                    firstName: "Micheal",
-                    lastName: "De Santa",
-                    email: "michealdesanta@lossantos.com",
-                    isAdmin: true
-                }
-            }
-        },
-        watch: {
-            followers(newFollowerCount, oldFollowerCount) {
-                if (oldFollowerCount < newFollowerCount) {
-                    console.log(`${this.user.username} has gained a follower!`);
-                }
-            }
-        },
-        computed: {
-            fullName() {
-                return `${this.user.firstName} ${this.user.lastName}`;
-            }
-        },
-        methods: {
-            followUser() {
-                this.followers++;
-            }
-        },
-        mounted() {
-            this.followUser();
-        }
+        components: {UserProfile}
     }
 </script>
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
         color: #2c3e50;
-        margin-top: 60px;
-    }
-
-    button {
-        width: 80px;
-        align-self: center;
+        min-height: 100vh;
+        min-width: 100vw;
+        background-color: #F3F5FA;
     }
 </style>
