@@ -1,7 +1,7 @@
 <template>
     <div class="twoot-item" @click="favouriteTwoot(twoot.id)">
         <div class="twoot">
-            <div class="user">
+            <div class="username">
                 @{{username}}
             </div>
             <div class="content">
@@ -32,7 +32,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .twoot-item {
         padding: 20px;
         background-color: white;
@@ -41,13 +41,13 @@
         box-sizing: border-box;
         cursor: pointer;
         transition: all 0.25s ease;
+
+        .username {
+            font-weight: bold;
+        }
     }
 
     .twoot-item:hover {
         transform: scale(1.1, 1.1);
-    }
-
-    .user {
-        font-weight: bold;
     }
 </style>

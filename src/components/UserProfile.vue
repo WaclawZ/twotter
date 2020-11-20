@@ -99,45 +99,44 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .user-profile {
         display: grid;
         grid-template-columns: 1fr 3fr;
         grid-gap: 50px;
         padding: 50px 5%;
-    }
 
-    .user-panel {
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        background-color: white;
-        border-radius: 5px;
-        border: 1px solid #DFE3E8;
-    }
+        .user-panel {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #DFE3E8;
 
-    .admin-badge {
-        background: firebrick;
-        color: white;
-        border-radius: 5px;
-        margin-right: auto;
-        padding: 0 10px;
-        font-weight: bold;
-    }
+            h1 {
+                margin: 0;
+            }
 
-    h1 {
-        margin: 0;
-    }
+            .admin-badge {
+                background: firebrick;
+                color: white;
+                border-radius: 5px;
+                margin-right: auto;
+                padding: 0 10px;
+                font-weight: bold;
+            }
 
-    .twoots-wrapper {
-        display: grid;
-        grid-gap: 10px;
-    }
+            .create-twoot {
+                padding-top: 10px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
 
-    .create-twoot {
-        padding-top: 10px;
-        display: flex;
-        flex-direction: column;
+        .twoots-wrapper {
+            display: grid;
+            grid-gap: 10px;
+        }
     }
-
 </style>
