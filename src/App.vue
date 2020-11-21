@@ -1,15 +1,30 @@
 <template>
     <div id="app">
+        <nav>
+            <div class="navigation__logo">
+                Twotter
+            </div>
+            <div class="navigation__user">
+                {{ user.username }}
+            </div>
+        </nav>
         <UserProfile/>
     </div>
 </template>
 
 <script>
-    import UserProfile from "./components/UserProfile";
+    import UserProfile from "./views/UserProfile";
 
     export default {
         name: 'App',
-        components: {UserProfile}
+        components: {UserProfile},
+        data() {
+            return {
+                user: {
+                    username: "deSanta"
+                }
+            }
+        }
     }
 </script>
 
@@ -20,6 +35,24 @@
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
         min-height: 100vh;
-        background-color: #F3F5FA;
+        background-color: lightgrey;
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 5%;
+            background-color: darkgoldenrod;
+            color: white;
+
+            .navigation__logo {
+                font-weight: bold;
+                font-size: 24px;
+            }
+
+            .navigation__user {
+                font-weight: bold;
+            }
+        }
     }
 </style>
