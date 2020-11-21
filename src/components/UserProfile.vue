@@ -7,8 +7,13 @@
                 <strong>Followers: </strong> {{ followers }}
             </div>
 
-            <form class="create-twoot" @submit.prevent="createNewTwoot">
-                <label for="newTwoot"><strong>New Twoot</strong></label>
+            <form class="create-twoot"
+                  :class="{'--exceeded': newTwootCharacterCount > 180}"
+                  @submit.prevent="createNewTwoot"
+            >
+                <label for="newTwoot">
+                    <strong>New Twoot</strong> ({{newTwootCharacterCount}}/180)
+                </label>
                 <textarea id="newTwoot" rows="4" v-model="newTwootContent"/>
                 <div class="create-twoot-type">
                     <label for="newTwootType"><strong>Type: </strong></label>
@@ -18,7 +23,7 @@
                         </option>
                     </select>
                 </div>
-                <button>
+                <button :disabled="newTwootCharacterCount > 180">
                     Twoot!
                 </button>
             </form>
@@ -46,8 +51,8 @@
                 newTwootContent: '',
                 selectedTwootType: "instant",
                 twootTypes: [
-                    { value: "draft", name: "Draft"},
-                    { value: "instant", name: "Instant Twoot"},
+                    {value: "draft", name: "Draft"},
+                    {value: "instant", name: "Instant Twoot"},
                 ],
                 followers: 0,
                 user: {
@@ -72,8 +77,8 @@
             }
         },
         computed: {
-            fullName() {
-                return `${this.user.firstName} ${this.user.lastName}`;
+            newTwootCharacterCount() {
+                return this.newTwootContent.length;
             }
         },
         methods: {
@@ -84,7 +89,7 @@
                 console.log(`Twoot #${id}`)
             },
             createNewTwoot() {
-                if(this.newTwootContent && this.selectedTwootType !== "draft") {
+                if (this.newTwootContent && this.selectedTwootType !== "draft") {
                     this.user.twoots.unshift({
                         id: this.user.twoots.length,
                         content: this.newTwootContent
@@ -131,6 +136,15 @@
                 padding-top: 10px;
                 display: flex;
                 flex-direction: column;
+
+                &.--exceeded {
+                    color: red;
+
+                    button {
+                        background-color: red;
+                        color: white;
+                    }
+                }
             }
         }
 

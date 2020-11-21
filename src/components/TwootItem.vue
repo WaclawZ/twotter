@@ -42,12 +42,12 @@
         cursor: pointer;
         transition: all 0.25s ease;
 
+        &:hover {
+            transform: scale(1.1, 1.1);
+        }
+
         .username {
             font-weight: bold;
         }
-    }
-
-    .twoot-item:hover {
-        transform: scale(1.1, 1.1);
     }
 </style>
