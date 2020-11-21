@@ -24,26 +24,26 @@
 </template>
 
 <script>
-    import { reactive } from "vue";
-    import TwootItem from "../components/TwootItem"
-    import CreateTwootPanel from "../components/CreateTwootPanel";
+    import { reactive } from 'vue';
+    import TwootItem from '../components/TwootItem'
+    import CreateTwootPanel from '../components/CreateTwootPanel';
 
     export default {
-        name: "UserProfile",
+        name: 'UserProfile',
         components: {CreateTwootPanel, TwootItem},
         setup() {
             const state = reactive({
                 followers: 0,
                 user: {
                     id: 0,
-                    username: "deSanta",
-                    firstName: "Micheal",
-                    lastName: "De Santa",
-                    email: "michealdesanta@lossantos.com",
+                    username: 'deSanta',
+                    firstName: 'Micheal',
+                    lastName: 'De Santa',
+                    email: 'michealdesanta@lossantos.com',
                     isAdmin: true,
                     twoots: [
-                        {id: 0, content: "Twotter is amazing!"},
-                        {id: 1, content: "Don't forget to subscribe to Twotter profile."}
+                        {id: 0, content: 'Twotter is amazing!'},
+                        {id: 1, content: 'Don\'t forget to subscribe to Twotter profile.'}
                     ]
                 }
             })

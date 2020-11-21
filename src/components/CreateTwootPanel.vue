@@ -23,26 +23,26 @@
 </template>
 
 <script>
-    import {reactive, computed} from "vue";
+    import { reactive, computed } from 'vue';
 
     export default {
-        name: "CreateTwootPanel",
+        name: 'CreateTwootPanel',
         setup(props, ctx) {
             const state = reactive({
                 newTwootContent: '',
-                selectedTwootType: "instant",
+                selectedTwootType: 'instant',
                 twootTypes: [
-                    {value: "draft", name: "Draft"},
-                    {value: "instant", name: "Instant Twoot"},
+                    {value: 'draft', name: 'Draft'},
+                    {value: 'instant', name: 'Instant Twoot'},
                 ]
             })
 
             const newTwootCharacterCount = computed(() => state.newTwootContent.length)
 
             const createNewTwoot = () => {
-                if (state.newTwootContent && state.selectedTwootType !== "draft") {
-                    ctx.emit("add-twoot", state.newTwootContent)
-                    state.newTwootContent = "";
+                if (state.newTwootContent && state.selectedTwootType !== 'draft') {
+                    ctx.emit('add-twoot', state.newTwootContent)
+                    state.newTwootContent = '';
                 }
             }
 

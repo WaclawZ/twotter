@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import UserProfile from "./views/UserProfile";
+    import UserProfile from './views/UserProfile';
 
     export default {
         name: 'App',
@@ -21,7 +21,7 @@
         data() {
             return {
                 user: {
-                    username: "deSanta"
+                    username: 'deSanta'
                 }
             }
         }
