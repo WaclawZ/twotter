@@ -2,21 +2,21 @@
     <div class="user-profile">
         <div class="user-profile__sidebar">
             <div class="user-profile__user-panel">
-                <h1 class="user-profile__username">@{{ user.username }}</h1>
-                <div class="user-profile__admin-badge" v-if="user.isAdmin">
+                <h1 class="user-profile__username">@{{ state.user.username }}</h1>
+                <div class="user-profile__admin-badge" v-if="state.user.isAdmin">
                     Admin
                 </div>
                 <div class="user-profile__follower-count">
-                    <strong>Followers: </strong> {{ followers }}
+                    <strong>Followers: </strong> {{ state.followers }}
                 </div>
             </div>
             <CreateTwootPanel @add-twoot="addTwoot"/>
         </div>
         <div class="user-profile__twoots-wrapper">
             <TwootItem
-                    v-for="twoot in user.twoots"
+                    v-for="twoot in state.user.twoots"
                     :key="twoot.id"
-                    :username="user.username"
+                    :username="state.user.username"
                     :twoot="twoot"
             />
         </div>
@@ -24,14 +24,15 @@
 </template>
 
 <script>
+    import { reactive } from "vue";
     import TwootItem from "../components/TwootItem"
     import CreateTwootPanel from "../components/CreateTwootPanel";
 
     export default {
         name: "UserProfile",
         components: {CreateTwootPanel, TwootItem},
-        data() {
-            return {
+        setup() {
+            const state = reactive({
                 followers: 0,
                 user: {
                     id: 0,
@@ -45,13 +46,17 @@
                         {id: 1, content: "Don't forget to subscribe to Twotter profile."}
                     ]
                 }
+            })
+
+            const addTwoot = (twoot) => {
+                state.user.twoots.unshift({id: state.user.twoots.length, content: twoot})
             }
-        },
-        methods: {
-            addTwoot(twoot) {
-                this.user.twoots.unshift({id: this.user.twoots.length, content: twoot})
+
+            return {
+                state,
+                addTwoot
             }
-        },
+        }
     }
 </script>
 
